@@ -1,6 +1,7 @@
 //external packages import
 import express from "express";
 import mongoose from "mongoose"; //db connection 1
+import cors from 'cors'
 //internal import
 import todoRouter from "./routes/todo.js";
 import userRouter from "./routes/user.js";
@@ -11,6 +12,8 @@ await mongoose.connect(process.env.MONGO_URI);
 //create an express app
 const app = express();
 
+//add cors
+app.use(cors());
 //use middlewares
 app.use(express.json());
 
