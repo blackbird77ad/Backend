@@ -1,4 +1,4 @@
-//external packages import
+//external import: module 
 import express from "express";
 import mongoose from "mongoose"; //db connection 1
 import cors from 'cors'
