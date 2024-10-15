@@ -3,6 +3,7 @@ import { addTodoValidator, updateTodoValidator } from "../validators/todo.js";
 
 export const addTodo = async (req, res, next) => {
     try {
+        
         //Validate user input
         const { error, value } = addTodoValidator.validate({
             ...req.body,
@@ -22,8 +23,11 @@ export const addTodo = async (req, res, next) => {
 
 export const getTodos = async (req, res, next) => {
     try {
+        const { filter = "{}", limit = 10, skip = 0} = req.query; //the limit goes with the skip and is done on the find
         //Fetch todos from database
-        const todos = await TodoModel.find();
+        const todos = await TodoModel.find(JSON.parse(filter))
+        .limit(limit)//Json.parse a string to json
+        .skip(skip);
         //return response
         res.status(200).json(todos);
     } catch (error) {
