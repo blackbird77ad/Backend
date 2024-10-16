@@ -3,6 +3,7 @@ import { multerSaveFilesOrg } from "multer-savefilesorg";
 
 export const localUpload = multer({dest: 'uploads/'}) //storage engine is created locally
 
+//remote storage created on savefile.org  
 export const todoIconUpload = multer({
     storage: multerSaveFilesOrg({
         apiAccessToken: process.env.SAVEFILESORG_API_KEY,

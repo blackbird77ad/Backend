@@ -13,9 +13,9 @@ export const addTodo = async (req, res, next) => {
             return res.status(422).json(error);
         }
         //write todo to database 
-        await TodoModel.create(value);
+       const add = await TodoModel.create(value);
         //Respond to request
-        res.status(201).json("Todo was added!");
+        res.status(201).json(`You added ${add} to your Todos`);
     } catch (error) {
         next(error);
     }
